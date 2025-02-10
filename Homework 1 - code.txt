@@ -1,0 +1,191 @@
+---
+title: |
+  Homework  
+  AGRO932 - Biometrical Genetics and Plant Breeding
+ 
+author: "Arthur Bernardeli"
+
+date: "`r Sys.Date()`"
+
+output: html_notebook
+
+---
+
+# Paper
+
+- Zhang, J., Wang, X., Lu, Y., Bhusal, S. J., Song, Q., Cregan, P. B., ... & Jiang, G. L. (2018). Genome-wide scan for seed composition provides insights into soybean quality improvement and the impacts of domestication and breeding. Molecular Plant, 11(3), 460-472.
+
+---
+
+# DOI
+
+- https://doi.org/10.1016/j.molp.2017.12.016
+
+---
+
+# Assignment topic
+- This file summarizes the materials and methods of a Genome-Wide Association Study (GWAS) on soybean seed composition traits.
+
+---
+
+# **Summary of Materials and Methods**
+
+---
+
+# 1. Plant Materials and Experimental Design
+
+## Plant Population
+- 321 *Glycine max* (soybean) plant introductions (PIs) were selected from the USDA Soybean Germplasm Collection.
+- The population was restricted to early maturity groups (MG 0 and MG 00) due to soybean’s photoperiod sensitivity.
+- 91% of the PIs originated from China.
+
+## Field Trials and Experimental Design
+- Conducted in three locations:  
+  - Aurora (2011)  
+  - Brookings (2012)  
+  - Watertown (2012), South Dakota  
+- Experimental Design:
+  - Randomized complete block design with three replications.
+  - Field setup referenced from Zhang *et al*., 2015a, 2015b.
+
+---
+
+# 2. Phenotypic Evaluation and Statistical Analysis
+
+## Traits Measured
+  - Seed protein
+  - Oil content
+  - Five fatty acids
+  - 18 amino acids
+
+## Method of Analysis
+- Near-Infrared Reflectance (NIR) Spectroscopy DA-7200 (Perten Instruments, Sweden).
+- Calibrations from 2011 were applied, covering 915–3641 samples per seed component.
+- Correlation coefficients: ranged from 0.77 for stearic acid to 0.97 for protein (average: 0.90).
+- Trait heritability and variance analysis were based on prior studies (Zhang *et al*., 2015a, 2015b).
+
+---
+
+# 3. Genotyping, Quality Control, and Genome-wide Linkage Disequilibrium (LD)
+
+## Reference Genome
+- *Glycine max* reference genome: *Glyma.Wm82.a2* (*SoyBase*, [soybase.org](http://soybase.org/)).
+
+## Genotyping Platform
+- Illumina Infinium SoySNP50K BeadChip used for SNP genotyping.
+- Contains 52,041 SNPs, filtered from an original 209,903 SNPs.
+
+## Final SNP Dataset Used
+- 31,850 SNPs retained (Minor Allele Frequency (MAF) ≥ 5%).
+- 313 out of 321 PIs used (8 PIs lacked genotyping data).
+
+## Linkage Disequilibrium (LD) Estimation
+- Performed as per Zhang et al., 2015b.
+
+---
+
+# 4. Genome-wide Association Study (GWAS) Analysis
+
+## Best Linear Unbiased Predictors (BLUPs)
+- BLUPs were calculated for all traits.
+
+## GWAS Methods Used
+- Single-locus Mixed Linear Model (MLM) (Yu *et al*., 2006).
+- Multi-Locus Mixed Model (MLMM) (Segura *et al*., 2012).
+- Implemented using GAPIT package (Zhang *et al*., 2010; Lipka *et al*., 2012).
+
+## Population Structure Analysis
+- Principal Component Analysis (PCA) using all SNPs.
+- STRUCTURE software (K=3) to classify subgroups.
+
+## Differentiation & Statistical Analysis
+- Fixation Index (Fst) calculated using R package snpStats.
+- Bonferroni correction applied (P < 1.57 × 10⁻*).
+
+---
+
+# 5. QTL Mapping and Candidate Gene Prediction
+
+## QTL Mapping Method
+- Loci mapped using SSR markers from Consensus 4.0 sequence (*SoyBase*).
+
+## Candidate Gene Annotation
+- Gene models used:
+  - Glyma1.0
+  - Glyma1.1
+  - NCBI RefSeq
+
+## Allele Frequency Analysis
+- Conducted on:
+  - 96 wild soybeans (*G. soja*)
+  - 92 landraces
+  - 96 elite cultivars
+- Data sourced from *SoyBase*
+
+---
+
+# 6. Geographic and Phylogenetic Analysis of Alleles
+
+## Dataset Used
+- 13,195 accessions, including wild and cultivated soybeans.
+
+## Geographic Origin
+- Wild Soybean (*G. soja*) Origins:
+  - China (158)
+  - South Korea (307)
+  - Japan (293)
+- Cultivated Soybean (*G. max*) Origins:
+  - China (5096)
+  - North Korea (224)
+  - South Korea (3380)
+  - Japan (2877)
+
+## Phylogenetic Analysis
+- Conducted using R package ape (Paradis *et al*., 2004).
+- Focused on rare allele regions.
+
+---
+
+## 7. Load datasets
+
+- Datasets below were reduced to meet homework purposes.
+  - *G. max* SNP dataset (n<10 accessions) 
+  - *G. soja* SNP dataset (n<10 accessions)
+  - *G. max* reference genome
+  - *G. soja* reference genome
+- Gene models
+  - Glyma1.0
+  - Glyma1.1
+  - NCBI RefSeq
+  
+```{r}
+library(ggplot2)
+library(dplyr)
+library(vcfR)
+library(GAPIT)
+library(qqman)
+```
+
+---
+
+## 8. Bash code used to create GitHub Repository
+
+- Link
+  - Arthur Bernardeli ([github.com\arthurbernardeli](http://github.com\arthurbernardeli/)).
+  
+  
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+```{r}
+
+```
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
